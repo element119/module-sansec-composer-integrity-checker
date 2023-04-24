@@ -1,7 +1,7 @@
 {
     "name": "element119/module-sansec-composer-integrity-checker",
     "type": "magento2-module",
-    "description": "A Magento 2 module that wraps the Sansec Composer Integrity package.",
+    "description": "A Magento 2 module wrapper for the Sansec Composer Integrity plugin.",
     "license": "proprietary",
     "authors": [
         {
