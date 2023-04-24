@@ -8,6 +8,6 @@
 <grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
     <source>
-        <arrayProvider>Element119\SansecComposerIntegrityChecker\Model\IntegrityResultsStorage</arrayProvider>
+        <arrayProvider>Element119\SansecComposerIntegrityChecker\Model\IntegrityResultsRegistry</arrayProvider>
     </source>
 </grid>

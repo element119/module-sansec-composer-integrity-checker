@@ -12,7 +12,7 @@ use Hyva\Admin\Api\HyvaGridArrayProviderInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Flag;
 
-class IntegrityResultsStorage extends Flag implements HyvaGridArrayProviderInterface
+class IntegrityResultsRegistry extends Flag implements HyvaGridArrayProviderInterface
 {
     protected $_flagCode = 'sansec_composer_integrity_checker_results';
 
