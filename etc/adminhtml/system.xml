@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="system">
+            <group id="sansec_composer_integrity_checker"
+                   translate="label"
+                   type="text"
+                   sortOrder="1100"
+                   showInDefault="1"
+                   showInWebsite="0"
+                   showInStore="0">
+                <label>Sansec Composer Integrity Checker</label>
+                <field id="scan_enable"
+                       translate="label"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0"
+                       canRestore="1">
+                    <label>Enable Scanning</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
