@@ -83,5 +83,10 @@ series of email addresses that should be notified when packages fail to meet the
 
 <br>
 
+### Admin Grid
+![admin-grid](https://user-images.githubusercontent.com/40261741/234107087-0d617614-1583-4e7c-946d-167af2acee64.png)
+
+<br>
+
 ### Example Email Notification
 ![email-example](https://user-images.githubusercontent.com/40261741/234102797-8937df5a-7312-4750-a9ca-09c2ad7379bd.png)
