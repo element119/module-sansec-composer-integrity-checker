@@ -1,20 +1,24 @@
 {
-    "name": "element119/module-name",
+    "name": "element119/module-sansec-composer-integrity-checker",
     "type": "magento2-module",
-    "description": "A Magento 2 module that...",
+    "description": "A Magento 2 module that wraps the Sansec Composer Integrity package.",
     "license": "proprietary",
     "authors": [
+        {
+            "name": "element119",
+            "email": "hello@element119.co.uk"
+        },
         {
             "name": "Kiel Pykett",
             "email": "pykettk@gmail.com"
         }
     ],
     "require": {
-        "magento/module-name": "^100.0"
+        "sansec/composer-integrity-plugin": "^0.1.4"
     },
     "autoload": {
         "psr-4": {
-            "Element119\\ModuleName\\": ""
+            "Element119\\SansecComposerIntegrityChecker\\": ""
         },
         "files": [
             "registration.php"
