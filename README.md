@@ -1,7 +1,7 @@
 <h1 align="center">element119 | Sansec Composer Integrity Checker</h1>
 
 ## 📝 Features
-✔️ Identify potentially unwanted changes made to your project dependencies 
+✔️ Identify potentially unwanted changes made to your project dependencies using the [Sansec Composer integrity plugin](https://github.com/sansecio/composer-integrity-plugin)
 
 ✔️ Email notifications for packages that do not meet your desired integrity rating
 
