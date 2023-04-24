@@ -7,5 +7,10 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Element119_SansecComposerIntegrityChecker"/>
+    <module name="Element119_SansecComposerIntegrityChecker">
+        <sequence>
+            <module name="Hyva_Admin"/>
+            <module name="Magento_Backend"/>
+        </sequence>
+    </module>
 </config>
