@@ -8,12 +8,18 @@ declare(strict_types=1);
 namespace Element119\SansecComposerIntegrityChecker\Model;
 
 use Exception;
+use Hyva\Admin\Api\HyvaGridArrayProviderInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Flag;
 
-class IntegrityResultsStorage extends Flag
+class IntegrityResultsStorage extends Flag implements HyvaGridArrayProviderInterface
 {
     protected $_flagCode = 'sansec_composer_integrity_checker_results';
+
+    public function getHyvaGridData(): array
+    {
+        return $this->getLastResults();
+    }
 
     public function getLastResults(): ?array
     {

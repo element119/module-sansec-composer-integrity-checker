@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Element119_SansecComposerIntegrityChecker::view"
+             title="Sansec Composer Integrity Checker"
+             translate="title"
+             module="Element119_SansecComposerIntegrityChecker"
+             sortOrder="1000"
+             parent="Magento_Reports::report"
+             resource="Element119_SansecComposerIntegrityChecker::view"/>
+        <add id="Element119_SansecComposerIntegrityChecker::status"
+             title="Integrity Status"
+             translate="title"
+             module="Element119_SansecComposerIntegrityChecker"
+             sortOrder="10"
+             parent="Element119_SansecComposerIntegrityChecker::view"
+             action="sansec_composer_integrity_checker/index"
+             resource="Element119_SansecComposerIntegrityChecker::view"/>
+    </menu>
+</config>
