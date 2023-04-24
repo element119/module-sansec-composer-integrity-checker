@@ -7,18 +7,23 @@ declare(strict_types=1);
 
 namespace Element119\SansecComposerIntegrityChecker\Cron;
 
+use Element119\SansecComposerIntegrityChecker\Enum\IntegrityCheckerArrayKeys;
 use Element119\SansecComposerIntegrityChecker\Model\IntegrityResultsRegistry;
 use Element119\SansecComposerIntegrityChecker\Model\IntegrityResultsRegistryFactory;
 use Element119\SansecComposerIntegrityChecker\Scope\Config;
+use Element119\SansecComposerIntegrityChecker\Service\Notifier;
 use Element119\SansecComposerIntegrityChecker\Service\Scanner;
 use Exception;
 use Magento\Framework\Exception\FileSystemException;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\MailException;
 
 class Scan
 {
     public function __construct(
         private readonly IntegrityResultsRegistryFactory $integrityResultsRegistryFactory,
         private readonly Config $moduleConfig,
+        private readonly Notifier $notifier,
         private readonly Scanner $scanner,
     ) {}
 
@@ -27,6 +32,8 @@ class Scan
      *
      * @return void
      * @throws FileSystemException
+     * @throws LocalizedException
+     * @throws MailException
      * @throws Exception
      */
     public function execute(): void
@@ -39,6 +46,21 @@ class Scan
             /** @var IntegrityResultsRegistry $integrityResultsFlag */
             $integrityResultsFlag = $this->integrityResultsRegistryFactory->create();
             $integrityResultsFlag->setResults($results);
+
+            if ($this->moduleConfig->isSansecComposerIntegrityEmailNotificationEnabled()) {
+                $failedChecks = [];
+                $threshold = (int)$this->moduleConfig->getSansecComposerIntegrityMatchThreshold();
+
+                foreach ($results as $data) {
+                    if ((int)$data[IntegrityCheckerArrayKeys::Percentage->value] < $threshold) {
+                        $failedChecks[] = $data;
+                    }
+                }
+
+                if ($failedChecks) {
+                    $this->notifier->sendErrorNotification($failedChecks);
+                }
+            }
         }
     }
 }

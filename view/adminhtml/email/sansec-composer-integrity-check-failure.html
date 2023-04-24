@@ -1,0 +1,23 @@
+<!--
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+-->
+<!--@subject {{trans "Sansec Composer Integrity Checker Report Failure: %failure_count Issue(s) Found" failure_count=$failure_count}} @-->
+<!--@vars {
+"var failure_count":"Failure Count",
+"var package_data":"Package Data",
+} @-->
+<table>
+    <tr class="email-intro">
+        <td>
+            <p class="greeting">
+                {{trans "%failure_count packages failed to meet your threshold for the Sansec Composer integrity check:" failure_count=$failure_count}}
+            </p>
+        </td>
+    </tr>
+    <tr class="email-information">
+        {{layout handle="sansec_composer_integrity_checker_failure_items_email" package_data=$package_data area="adminhtml"}}
+    </tr>
+</table>

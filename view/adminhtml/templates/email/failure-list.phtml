@@ -1,0 +1,88 @@
+<?php
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+declare(strict_types=1);
+
+use Element119\SansecComposerIntegrityChecker\Enum\IntegrityCheckerArrayKeys;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+
+/** @var Escaper $escaper */
+/** @var Template $block */
+?>
+<?php if ($packageData = $block->getData('package_data')): ?>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <strong>
+                        <?= $escaper->escapeHtml(
+                            __(ucwords(str_replace(['-', '_'], ' ', IntegrityCheckerArrayKeys::Package->value)))
+                        ); ?>
+                    </strong>
+                </th>
+                <th>
+                    <strong>
+                        <?= $escaper->escapeHtml(
+                            __(ucwords(str_replace(['-', '_'], ' ', IntegrityCheckerArrayKeys::Version->value)))
+                        ); ?>
+                    </strong>
+                </th>
+                <th>
+                    <strong>
+                        <?= $escaper->escapeHtml(
+                            __(ucwords(str_replace(['-', '_'], ' ', IntegrityCheckerArrayKeys::Status->value)))
+                        ); ?>
+                    </strong>
+                </th>
+                <th>
+                    <strong>
+                        <?= $escaper->escapeHtml(
+                            __(ucwords(str_replace(['-', '_'], ' ', IntegrityCheckerArrayKeys::Percentage->value)))
+                        ); ?>
+                    </strong>
+                </th>
+                <th>
+                    <strong>
+                        <?= $escaper->escapeHtml(
+                            __(ucwords(str_replace(['-', '_'], ' ', IntegrityCheckerArrayKeys::Checksum->value)))
+                        ); ?>
+                    </strong>
+                </th>
+                <th>
+                    <strong>
+                        <?= $escaper->escapeHtml(
+                            __(ucwords(str_replace(['-', '_'], ' ', IntegrityCheckerArrayKeys::PackageId->value)))
+                        ); ?>
+                    </strong>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($packageData as $data): ?>
+                <tr>
+                    <td style="padding: 10px;">
+                        <?= $escaper->escapeHtml($data[IntegrityCheckerArrayKeys::Package->value]); ?>
+                    </td>
+                    <td style="padding: 10px;">
+                        <?= $escaper->escapeHtml($data[IntegrityCheckerArrayKeys::Version->value]); ?>
+                    </td>
+                    <td style="padding: 10px;">
+                        <?= $escaper->escapeHtml($data[IntegrityCheckerArrayKeys::Status->value]); ?>
+                    </td>
+                    <td style="padding: 10px;">
+                        <?= $escaper->escapeHtml($data[IntegrityCheckerArrayKeys::Percentage->value]); ?>
+                    </td>
+                    <td style="padding: 10px;">
+                        <?= $escaper->escapeHtml($data[IntegrityCheckerArrayKeys::Checksum->value]); ?>
+                    </td>
+                    <td style="padding: 10px;">
+                        <?= $escaper->escapeHtml($data[IntegrityCheckerArrayKeys::PackageId->value]); ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endif; ?>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © element119. All rights reserved.
+ * See LICENCE.txt for licence details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
+      label="Sansec Composer Integrity Check Failure List">
+    <update handle="empty"/>
+    <body>
+        <referenceContainer name="main">
+            <block name="sansec-composer-integrity-check.failure-list"
+                   template="Element119_SansecComposerIntegrityChecker::email/failure-list.phtml"
+                   cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>
