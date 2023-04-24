@@ -10,4 +10,37 @@
     <source>
         <arrayProvider>Element119\SansecComposerIntegrityChecker\Model\IntegrityResultsRegistry</arrayProvider>
     </source>
+    <columns>
+        <include>
+            <column name="package"/>
+            <column name="version"/>
+            <column name="status"/>
+            <column name="percentage"/>
+            <column name="checksum"/>
+            <column name="package_id"/>
+        </include>
+    </columns>
+    <navigation>
+        <exports>
+            <export type="csv" label="Export as CSV"/>
+            <export type="xml" label="Export as XML"/>
+            <export type="xlsx" label="Export as XLSX"/>
+        </exports>
+        <filters>
+            <filter column="package"/>
+            <filter column="version"/>
+            <filter column="status"/>
+            <filter column="percentage"/>
+            <filter column="checksum"/>
+            <filter column="package_id"/>
+        </filters>
+        <pager>
+            <defaultPageSize>20</defaultPageSize>
+            <pageSizes>20,30,50,100,200</pageSizes>
+        </pager>
+        <sorting>
+            <defaultSortByColumn>package</defaultSortByColumn>
+            <defaultSortDirection>asc</defaultSortDirection>
+        </sorting>
+    </navigation>
 </grid>
