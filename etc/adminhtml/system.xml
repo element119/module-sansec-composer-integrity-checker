@@ -28,6 +28,53 @@
                     <label>Enable Scanning</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
+                <field id="scan_email_notification_enable"
+                       translate="label"
+                       type="select"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0"
+                       canRestore="1">
+                    <label>Report Integrity Failures by Email</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="system/sansec_composer_integrity_checker/scan_enable">1</field>
+                    </depends>
+                </field>
+                <field id="scan_failure_threshold"
+                       translate="label comment"
+                       type="text"
+                       sortOrder="30"
+                       showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0"
+                       canRestore="1">
+                    <label>Match Percentage Threshold for Notification</label>
+                    <comment>Match percentages lower than this will result in an email notification.</comment>
+                    <validate>required-entry validate-digits validate-not-negative-number validate-digits-range digits-range-0-100</validate>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="system/sansec_composer_integrity_checker/scan_enable">1</field>
+                        <field id="system/sansec_composer_integrity_checker/scan_email_notification_enable">1</field>
+                    </depends>
+                </field>
+                <field id="scan_error_email_recipient"
+                       translate="label"
+                       sortOrder="40"
+                       showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0"
+                       canRestore="1">
+                    <label>Report Errors To</label>
+                    <validate>validate-email</validate>
+                    <frontend_model>Element119\SansecComposerIntegrityChecker\Block\Adminhtml\Form\Field\ComposerIntegrityNotificationEmailRecipients</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <depends>
+                        <field id="system/sansec_composer_integrity_checker/scan_enable">1</field>
+                        <field id="system/sansec_composer_integrity_checker/scan_email_notification_enable">1</field>
+                    </depends>
+                </field>
             </group>
         </section>
     </system>

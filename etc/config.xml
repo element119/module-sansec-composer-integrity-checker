@@ -11,6 +11,7 @@
         <system>
             <sansec_composer_integrity_checker>
                 <scan_enable>1</scan_enable>
+                <scan_email_notification_enable>0</scan_email_notification_enable>
             </sansec_composer_integrity_checker>
         </system>
     </default>
