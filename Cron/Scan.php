@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 namespace Element119\SansecComposerIntegrityChecker\Cron;
 
-use Element119\SansecComposerIntegrityChecker\Enum\IntegrityCheckerArrayKeys;
 use Element119\SansecComposerIntegrityChecker\Model\IntegrityResultsRegistry;
 use Element119\SansecComposerIntegrityChecker\Model\IntegrityResultsRegistryFactory;
 use Element119\SansecComposerIntegrityChecker\Scope\Config;
@@ -47,19 +46,10 @@ class Scan
             $integrityResultsFlag = $this->integrityResultsRegistryFactory->create();
             $integrityResultsFlag->setResults($results);
 
-            if ($this->moduleConfig->isSansecComposerIntegrityEmailNotificationEnabled()) {
-                $failedChecks = [];
-                $threshold = (int)$this->moduleConfig->getSansecComposerIntegrityMatchThreshold();
-
-                foreach ($results as $data) {
-                    if ((int)$data[IntegrityCheckerArrayKeys::Percentage->value] < $threshold) {
-                        $failedChecks[] = $data;
-                    }
-                }
-
-                if ($failedChecks) {
-                    $this->notifier->sendErrorNotification($failedChecks);
-                }
+            if ($this->moduleConfig->isSansecComposerIntegrityEmailNotificationEnabled()
+                && $failedChecks = $integrityResultsFlag->getFailedMatches($results)
+            ) {
+                $this->notifier->sendErrorNotification($failedChecks);
             }
         }
     }
