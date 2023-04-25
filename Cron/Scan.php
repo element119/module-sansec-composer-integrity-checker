@@ -10,7 +10,7 @@ namespace Element119\SansecComposerIntegrityChecker\Cron;
 use Element119\SansecComposerIntegrityChecker\Model\IntegrityResultsRegistry;
 use Element119\SansecComposerIntegrityChecker\Model\IntegrityResultsRegistryFactory;
 use Element119\SansecComposerIntegrityChecker\Scope\Config;
-use Element119\SansecComposerIntegrityChecker\Service\Notifier;
+use Element119\SansecComposerIntegrityChecker\Service\EmailNotifier;
 use Element119\SansecComposerIntegrityChecker\Service\Scanner;
 use Exception;
 use Magento\Framework\Exception\FileSystemException;
@@ -22,7 +22,7 @@ class Scan
     public function __construct(
         private readonly IntegrityResultsRegistryFactory $integrityResultsRegistryFactory,
         private readonly Config $moduleConfig,
-        private readonly Notifier $notifier,
+        private readonly EmailNotifier $emailNotifier,
         private readonly Scanner $scanner,
     ) {}
 
@@ -49,7 +49,7 @@ class Scan
             if ($this->moduleConfig->isSansecComposerIntegrityEmailNotificationEnabled()
                 && $failedChecks = $integrityResultsFlag->getFailedMatches($results)
             ) {
-                $this->notifier->sendErrorNotification($failedChecks);
+                $this->emailNotifier->sendErrorNotification($failedChecks);
             }
         }
     }
