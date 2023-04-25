@@ -14,7 +14,7 @@ use Magento\Framework\Exception\MailException;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Magento\Store\Model\StoreManagerInterface;
 
-class Notifier
+class EmailNotifier
 {
     public const INTEGRITY_FAILURE_EMAIL_TEMPLATE_ID = 'sansec_composer_integrity_checker_failure';
 
