@@ -26,6 +26,11 @@ composer require element119/module-sansec-composer-integrity-checker
 php bin/magento setup:upgrade
 ```
 
+It is also recommended that you enable the scans and lock the related config value as a post-installation step:
+```bash
+php bin/magento config:set --lock-env system/sansec_composer_integrity_checker/scan_enable 1
+```
+
 <br/>
 
 ## ⏫ Updating
