@@ -7,13 +7,19 @@ declare(strict_types=1);
 
 namespace Element119\SansecComposerIntegrityChecker\Service;
 
+use DI\Container;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\FileSystemException;
-use Symfony\Component\Process\Process;
+use Sansec\Integrity\PackageResolver\LockReaderStrategy;
+use Sansec\Integrity\PackageSubmitter;
+use Symfony\Component\Console\Output\NullOutput;
 
 class Scanner
 {
-    public function __construct(private readonly DirectoryList $directoryList) {}
+    public function __construct(
+        private readonly Container $diContainer,
+        private readonly DirectoryList $directoryList,
+    ) {}
 
     /**
      * @return array
@@ -21,31 +27,16 @@ class Scanner
      */
     public function scan(): array
     {
-        $output = '';
-        $process = new Process($this->getCommandOptionsArray());
-        $process->run();
+        $scanner = $this->diContainer->make(
+            PackageSubmitter::class,
+            [
+                'packageResolverStrategy' => $this->diContainer->make(
+                    LockReaderStrategy::class,
+                    ['rootDirectory' => $this->directoryList->getPath(DirectoryList::ROOT)]
+                )
+            ]
+        );
 
-        foreach ($process as $data) {
-            $output .= $data;
-        }
-
-        $output = substr($output, 0, strpos($output, ']') + 1); // json output only
-
-        return json_decode($output, true);
-    }
-
-    /**
-     * @throws FileSystemException
-     */
-    public function getCommandOptionsArray(): array
-    {
-        return [
-            'composer',
-            'integrity',
-            '--json',
-            '--no-ansi',
-            '--no-interaction',
-            sprintf('--working-dir=%s', $this->directoryList->getPath(DirectoryList::ROOT)),
-        ];
+        return $scanner->getPackageVerdicts($this->diContainer->make(NullOutput::class));
     }
 }
