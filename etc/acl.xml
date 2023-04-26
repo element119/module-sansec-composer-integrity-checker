@@ -16,6 +16,10 @@
                                   title="Sansec Composer Integrity Checker"
                                   translate="title"
                                   sortOrder="10"/>
+                        <resource id="Element119_SansecComposerIntegrityChecker::run"
+                                  title="Run Sansec Composer Integrity Checker"
+                                  translate="title"
+                                  sortOrder="11"/>
                     </resource>
                 </resource>
             </resource>
