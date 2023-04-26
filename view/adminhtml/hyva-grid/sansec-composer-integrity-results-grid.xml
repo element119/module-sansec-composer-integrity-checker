@@ -21,6 +21,9 @@
         </include>
     </columns>
     <navigation>
+        <buttons>
+            <button id="run_scan" label="Run Scan" url="sansec_composer_integrity_checker/scan/run"/>
+        </buttons>
         <exports>
             <export type="csv" label="Export as CSV"/>
             <export type="xml" label="Export as XML"/>
