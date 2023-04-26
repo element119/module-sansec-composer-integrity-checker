@@ -7,18 +7,19 @@ declare(strict_types=1);
 
 namespace Element119\SansecComposerIntegrityChecker\Service;
 
-use DI\Container;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\FileSystemException;
-use Sansec\Integrity\PackageResolver\LockReaderStrategy;
-use Sansec\Integrity\PackageSubmitter;
-use Symfony\Component\Console\Output\NullOutput;
+use Sansec\Integrity\PackageResolver\LockReaderStrategyFactory;
+use Sansec\Integrity\PackageSubmitterFactory;
+use Symfony\Component\Console\Output\NullOutputFactory;
 
 class Scanner
 {
     public function __construct(
-        private readonly Container $diContainer,
         private readonly DirectoryList $directoryList,
+        private readonly LockReaderStrategyFactory $lockReaderFactory,
+        private readonly NullOutputFactory $nullOutputFactory,
+        private readonly PackageSubmitterFactory $scannerFactory,
     ) {}
 
     /**
@@ -27,16 +28,14 @@ class Scanner
      */
     public function scan(): array
     {
-        $scanner = $this->diContainer->make(
-            PackageSubmitter::class,
-            [
-                'packageResolverStrategy' => $this->diContainer->make(
-                    LockReaderStrategy::class,
-                    ['rootDirectory' => $this->directoryList->getPath(DirectoryList::ROOT)]
-                )
-            ]
-        );
+        $lockReader = $this->lockReaderFactory->create([
+            'rootDirectory' => $this->directoryList->getPath(DirectoryList::ROOT),
+        ]);
+        $scanner = $this->scannerFactory->create([
+            'packageResolverStrategy' => $lockReader,
+        ]);
+        $output = $this->nullOutputFactory->create();
 
-        return $scanner->getPackageVerdicts($this->diContainer->make(NullOutput::class));
+        return $scanner->getPackageVerdicts($output);
     }
 }
