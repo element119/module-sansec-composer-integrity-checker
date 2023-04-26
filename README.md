@@ -94,7 +94,7 @@ series of email addresses that should be notified when packages fail to meet the
 <br>
 
 ### Admin Notification
-![admin-notification](https://user-images.githubusercontent.com/40261741/234433383-c30d133c-bcde-480f-8faa-20b1ae13a523.png)
+![admin-notification](https://user-images.githubusercontent.com/40261741/234434736-0e187e19-f474-47cd-804b-7f4d150ba31b.png)
 
 <br>
 
