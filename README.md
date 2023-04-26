@@ -62,17 +62,17 @@ The Sansec Composer integrity scan can be disabled by setting this option to `No
 
 <br>
 
+### Match Percentage Threshold for Notification
+This option is only considered when integrity failure emails are enabled. The value specified here determines the
+minimum match percentage required for the integrity checks to be considered successful. Admins will be notified of any
+packages that fail to meet this number.
+
+<br>
+
 ### Report Integrity Failures by Email
 Allow emails to be sent when the Sansec Composer integrity checker finds discrepancies with your dependency files.
 This feature is disabled by default but can be enabled by setting this option to `Yes`. Once enabled you will be able
 to configure a threshold for dependency matching as well as a list of email address to notify when a failure occurs.
-
-<br>
-
-### Match Percentage Threshold for Notification
-This option is only considered when integrity failure emails are enabled. The value specified here determines the
-minimum match percentage required for the integrity checks to be considered successful. Admins will be notified of any
-packages that fail to meet this number. 
 
 <br>
 
@@ -90,6 +90,11 @@ series of email addresses that should be notified when packages fail to meet the
 
 ### Admin Grid
 ![admin-grid](https://user-images.githubusercontent.com/40261741/234107087-0d617614-1583-4e7c-946d-167af2acee64.png)
+
+<br>
+
+### Admin Notification
+![admin-notification](https://user-images.githubusercontent.com/40261741/234433383-c30d133c-bcde-480f-8faa-20b1ae13a523.png)
 
 <br>
 
