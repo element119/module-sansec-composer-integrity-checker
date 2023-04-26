@@ -3,7 +3,7 @@
 ## 📝 Features
 ✔️ Identify potentially unwanted changes made to your project dependencies using the [Sansec Composer integrity plugin](https://github.com/sansecio/composer-integrity-plugin)
 
-✔️ Email notifications for packages that do not meet your desired integrity rating
+✔️ Email and admin notifications for packages that do not meet your desired integrity rating
 
 ✔️ Supports Magento Open Source and Adobe Commerce
 
@@ -54,6 +54,12 @@ php bin/magento setup:upgrade
 ## 📚 User Guide
 Configuration for this module can be found in the Magento admin under `Stores -> Settings -> Configuration -> Advanced
 -> System -> Sansec Composer Integrity Checker`
+
+<br>
+
+### Scan Results Grid
+The results of the most recent scan can be seen in the admin by navigating to `Reports -> Sansec Composer
+Integrity Checker -> Integrity Status`.
 
 <br>
 
