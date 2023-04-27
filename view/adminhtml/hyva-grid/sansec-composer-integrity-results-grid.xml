@@ -12,12 +12,12 @@
     </source>
     <columns>
         <include>
-            <column name="package"/>
+            <column name="name"/>
             <column name="version"/>
-            <column name="status"/>
+            <column name="verdict"/>
             <column name="percentage"/>
             <column name="checksum"/>
-            <column name="package_id"/>
+            <column name="id"/>
         </include>
     </columns>
     <navigation>
@@ -27,19 +27,19 @@
             <export type="xlsx" label="Export as XLSX"/>
         </exports>
         <filters>
-            <filter column="package"/>
+            <filter column="name"/>
             <filter column="version"/>
-            <filter column="status"/>
+            <filter column="verdict"/>
             <filter column="percentage"/>
             <filter column="checksum"/>
-            <filter column="package_id"/>
+            <filter column="id"/>
         </filters>
         <pager>
             <defaultPageSize>20</defaultPageSize>
             <pageSizes>20,30,50,100,200</pageSizes>
         </pager>
         <sorting>
-            <defaultSortByColumn>package</defaultSortByColumn>
+            <defaultSortByColumn>name</defaultSortByColumn>
             <defaultSortDirection>asc</defaultSortDirection>
         </sorting>
     </navigation>

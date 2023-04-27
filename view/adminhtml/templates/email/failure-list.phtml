@@ -5,7 +5,6 @@
  */
 declare(strict_types=1);
 
-use Element119\SansecComposerIntegrityChecker\Enum\IntegrityCheckerArrayKeys;
 use Magento\Framework\Escaper;
 use Magento\Framework\View\Element\Template;
 
@@ -16,71 +15,23 @@ use Magento\Framework\View\Element\Template;
     <table>
         <thead>
             <tr>
-                <th>
-                    <strong>
-                        <?= $escaper->escapeHtml(
-                            __(ucwords(str_replace(['-', '_'], ' ', IntegrityCheckerArrayKeys::Package->value)))
-                        ); ?>
-                    </strong>
-                </th>
-                <th>
-                    <strong>
-                        <?= $escaper->escapeHtml(
-                            __(ucwords(str_replace(['-', '_'], ' ', IntegrityCheckerArrayKeys::Version->value)))
-                        ); ?>
-                    </strong>
-                </th>
-                <th>
-                    <strong>
-                        <?= $escaper->escapeHtml(
-                            __(ucwords(str_replace(['-', '_'], ' ', IntegrityCheckerArrayKeys::Status->value)))
-                        ); ?>
-                    </strong>
-                </th>
-                <th>
-                    <strong>
-                        <?= $escaper->escapeHtml(
-                            __(ucwords(str_replace(['-', '_'], ' ', IntegrityCheckerArrayKeys::Percentage->value)))
-                        ); ?>
-                    </strong>
-                </th>
-                <th>
-                    <strong>
-                        <?= $escaper->escapeHtml(
-                            __(ucwords(str_replace(['-', '_'], ' ', IntegrityCheckerArrayKeys::Checksum->value)))
-                        ); ?>
-                    </strong>
-                </th>
-                <th>
-                    <strong>
-                        <?= $escaper->escapeHtml(
-                            __(ucwords(str_replace(['-', '_'], ' ', IntegrityCheckerArrayKeys::PackageId->value)))
-                        ); ?>
-                    </strong>
-                </th>
+                <th><strong><?= $escaper->escapeHtml(__('Package')); ?></strong></th>
+                <th><strong><?= $escaper->escapeHtml(__('Version')); ?></strong></th>
+                <th><strong><?= $escaper->escapeHtml(__('Verdict')); ?></strong></th>
+                <th><strong><?= $escaper->escapeHtml(__('Percentage')); ?></strong></th>
+                <th><strong><?= $escaper->escapeHtml(__('Checksum')); ?></strong></th>
+                <th><strong><?= $escaper->escapeHtml(__('Package ID')); ?></strong></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($packageData as $data): ?>
                 <tr>
-                    <td style="padding: 10px;">
-                        <?= $escaper->escapeHtml($data[IntegrityCheckerArrayKeys::Package->value]); ?>
-                    </td>
-                    <td style="padding: 10px;">
-                        <?= $escaper->escapeHtml($data[IntegrityCheckerArrayKeys::Version->value]); ?>
-                    </td>
-                    <td style="padding: 10px;">
-                        <?= $escaper->escapeHtml($data[IntegrityCheckerArrayKeys::Status->value]); ?>
-                    </td>
-                    <td style="padding: 10px;">
-                        <?= $escaper->escapeHtml($data[IntegrityCheckerArrayKeys::Percentage->value]); ?>
-                    </td>
-                    <td style="padding: 10px;">
-                        <?= $escaper->escapeHtml($data[IntegrityCheckerArrayKeys::Checksum->value]); ?>
-                    </td>
-                    <td style="padding: 10px;">
-                        <?= $escaper->escapeHtml($data[IntegrityCheckerArrayKeys::PackageId->value]); ?>
-                    </td>
+                    <td style="padding: 10px;"><?= $escaper->escapeHtml($data['name']); ?></td>
+                    <td style="padding: 10px;"><?= $escaper->escapeHtml($data['version']); ?></td>
+                    <td style="padding: 10px;"><?= $escaper->escapeHtml($data['verdict']); ?></td>
+                    <td style="padding: 10px;"><?= $escaper->escapeHtml($data['percentage']); ?></td>
+                    <td style="padding: 10px;"><?= $escaper->escapeHtml($data['checksum']); ?></td>
+                    <td style="padding: 10px;"><?= $escaper->escapeHtml($data['id']); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
