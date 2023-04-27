@@ -16,15 +16,11 @@ class Index extends Action
 {
     public const ADMIN_RESOURCE = 'Element119_SansecComposerIntegrityChecker::status';
 
-    private PageFactory $resultPageFactory;
-
     public function __construct(
         Context $context,
-        PageFactory $resultPageFactory
+        private readonly PageFactory $resultPageFactory
     ) {
         parent::__construct($context);
-
-        $this->resultPageFactory = $resultPageFactory;
     }
 
     public function execute(): Page

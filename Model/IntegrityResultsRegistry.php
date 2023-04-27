@@ -23,12 +23,10 @@ class IntegrityResultsRegistry extends Flag implements HyvaGridArrayProviderInte
 {
     protected $_flagCode = 'sansec_composer_integrity_checker_results';
 
-    private Config $moduleConfig;
-
     public function __construct(
         Context $context,
         Registry $registry,
-        Config $moduleConfig,
+        private readonly Config $moduleConfig,
         AbstractResource $resource = null,
         AbstractDb $resourceCollection = null,
         array $data = [],
@@ -36,8 +34,6 @@ class IntegrityResultsRegistry extends Flag implements HyvaGridArrayProviderInte
         Serialize $serialize = null
     ) {
         parent::__construct($context, $registry, $resource, $resourceCollection, $data, $json, $serialize);
-
-        $this->moduleConfig = $moduleConfig;
     }
 
     public function getHyvaGridData(): array

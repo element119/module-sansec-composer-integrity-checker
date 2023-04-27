@@ -19,18 +19,12 @@ class Run extends Action
 {
     public const ADMIN_RESOURCE = 'Element119_SansecComposerIntegrityChecker::run';
 
-    private IntegrityResultsRegistry $integrityResultsRegistry;
-    private Scanner $scanner;
-
     public function __construct(
         Context $context,
-        IntegrityResultsRegistry $integrityResultsRegistry,
-        Scanner $scanner
+        private readonly IntegrityResultsRegistry $integrityResultsRegistry,
+        private readonly Scanner $scanner
     ) {
         parent::__construct($context);
-
-        $this->integrityResultsRegistry = $integrityResultsRegistry;
-        $this->scanner = $scanner;
     }
 
     /**
