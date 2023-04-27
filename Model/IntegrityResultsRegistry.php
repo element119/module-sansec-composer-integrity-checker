@@ -59,7 +59,7 @@ class IntegrityResultsRegistry extends Flag implements HyvaGridArrayProviderInte
      */
     public function setResults(array $data): self
     {
-        $this->setFlagData($data);
+        $this->loadSelf()->setFlagData($data);
 
         return $this->save();
     }
