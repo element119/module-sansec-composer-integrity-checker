@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 namespace Element119\SansecComposerIntegrityChecker\Model;
 
-use Element119\SansecComposerIntegrityChecker\Enum\IntegrityCheckerArrayKeys;
 use Element119\SansecComposerIntegrityChecker\Scope\Config;
 use Exception;
 use Hyva\Admin\Api\HyvaGridArrayProviderInterface;
@@ -71,7 +70,9 @@ class IntegrityResultsRegistry extends Flag implements HyvaGridArrayProviderInte
         $threshold = $this->moduleConfig->getSansecComposerIntegrityMatchThreshold();
 
         foreach ($packages ?: $this->getLastResults() as $package) {
-            if ((int)$package[IntegrityCheckerArrayKeys::Percentage->value] < $threshold) {
+            $package = (array)$package;
+
+            if ((int)$package['percentage'] < $threshold) {
                 $failures[] = $package;
             }
         }
