@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "hyva-themes/module-magento2-admin": "^1.1.20",
+        "hyva-themes/module-magento2-admin": "^1.1",
         "sansec/composer-integrity-plugin": "^0.2.0"
     },
     "suggest": {
