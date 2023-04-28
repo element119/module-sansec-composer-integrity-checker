@@ -3,6 +3,8 @@
 ## 📝 Features
 ✔️ Identify potentially unwanted changes made to your project dependencies using the [Sansec Composer integrity plugin](https://github.com/sansecio/composer-integrity-plugin)
 
+✔️ Scan files automatically via cron or as a manual admin action
+
 ✔️ Email and admin notifications for packages that do not meet your desired integrity rating
 
 ✔️ Supports Magento Open Source and Adobe Commerce
@@ -69,9 +71,9 @@ The Sansec Composer integrity scan can be disabled by setting this option to `No
 <br>
 
 ### Match Percentage Threshold for Notification
-This option is only considered when integrity failure emails are enabled. The value specified here determines the
-minimum match percentage required for the integrity checks to be considered successful. Admins will be notified of any
-packages that fail to meet this number.
+The value specified here determines the minimum match percentage required for the integrity checks to be considered
+sucessful. Admins will be notified of any packages that fail to meet this number via a warning and email notifications
+will be sent if enabled.
 
 <br>
 
