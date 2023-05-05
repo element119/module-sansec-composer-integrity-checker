@@ -65,7 +65,7 @@ class IntegrityResultsRegistry extends Flag implements HyvaGridArrayProviderInte
         $failures = [];
         $threshold = $this->moduleConfig->getSansecComposerIntegrityMatchThreshold();
 
-        foreach ($packages ?: $this->getLastResults() as $package) {
+        foreach ($packages ?: $this->getLastResults() ?? [] as $package) {
             $package = (array)$package;
 
             if ((int)$package['percentage'] < $threshold) {
