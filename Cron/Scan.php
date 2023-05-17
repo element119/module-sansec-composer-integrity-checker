@@ -44,9 +44,17 @@ class Scan
             $this->integrityResultsRegistry->setResults($results);
 
             if ($this->moduleConfig->isSansecComposerIntegrityEmailNotificationEnabled()
-                && $failedChecks = $this->integrityResultsRegistry->getFailedMatches($results)
+                && $failedMatches = $this->integrityResultsRegistry->getFailedMatches($results)
             ) {
-                $this->emailNotifier->sendErrorNotification($failedChecks);
+                if ($this->moduleConfig->isIgnoreListEnabled()
+                    && $this->moduleConfig->shouldRemoveIgnoredPackagesFromEmail()
+                ) {
+                    $failedMatches = $this->integrityResultsRegistry->removeIgnoredPackages($failedMatches);
+                }
+
+                if ($failedMatches) {
+                    $this->emailNotifier->sendErrorNotification($failedMatches);
+                }
             }
         }
     }

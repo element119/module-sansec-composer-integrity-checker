@@ -38,7 +38,11 @@ class IntegrityResultsRegistry extends Flag implements HyvaGridArrayProviderInte
 
     public function getHyvaGridData(): array
     {
-        return $this->getLastResults();
+        $packageData = $this->getLastResults();
+
+        return $this->moduleConfig->isIgnoreListEnabled() && $this->moduleConfig->shouldRemoveIgnoredPackagesFromAdminGrid()
+            ? $this->removeIgnoredPackages($packageData)
+            : $packageData;
     }
 
     public function getLastResults(): ?array
@@ -55,7 +59,13 @@ class IntegrityResultsRegistry extends Flag implements HyvaGridArrayProviderInte
      */
     public function setResults(array $data): self
     {
-        $this->loadSelf()->setFlagData($data);
+        $packages = [];
+
+        foreach ($data as $package) {
+            $packages[$package->name] = $package;
+        }
+
+        $this->loadSelf()->setFlagData($packages);
 
         return $this->save();
     }
@@ -69,10 +79,27 @@ class IntegrityResultsRegistry extends Flag implements HyvaGridArrayProviderInte
             $package = (array)$package;
 
             if ((int)$package['percentage'] < $threshold) {
-                $failures[] = $package;
+                $failures[$package['name']] = $package;
             }
         }
 
         return $failures;
+    }
+
+    public function removeIgnoredPackages(array &$packages): array
+    {
+        if (!$packages || !($ignoredPackages = $this->moduleConfig->getIgnoredPackageList())) {
+            return $packages;
+        }
+
+        $allPackageNames = array_keys($packages);
+
+        foreach ($ignoredPackages as $ignoredPackage) {
+            if (in_array($ignoredPackage, $allPackageNames)) {
+                unset($packages[$ignoredPackage]);
+            }
+        }
+
+        return $packages;
     }
 }

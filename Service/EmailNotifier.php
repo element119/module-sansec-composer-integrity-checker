@@ -32,7 +32,7 @@ class EmailNotifier
      */
     public function sendErrorNotification(array $data): void
     {
-        if (!($recipients = $this->moduleConfig->getSansecComposerIntegrityEmailRecipients())) {
+        if (!$data || !($recipients = $this->moduleConfig->getSansecComposerIntegrityEmailRecipients())) {
             return;
         }
 
