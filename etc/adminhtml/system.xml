@@ -74,6 +74,85 @@
                         <field id="system/sansec_composer_integrity_checker/scan_email_notification_enable">1</field>
                     </depends>
                 </field>
+                <field id="package_ignore_list_enable"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="50"
+                       showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0"
+                       canRestore="1">
+                    <label>Enable Package Ignore List</label>
+                    <comment>Allow reporting to be ignored for some packages.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="system/sansec_composer_integrity_checker/scan_enable">1</field>
+                    </depends>
+                </field>
+                <field id="ignored_packages"
+                       translate="label comment"
+                       sortOrder="60"
+                       showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>Ignored Packages</label>
+                    <comment>Values should be in the vendor/package format.</comment>
+                    <validate>no-marginal-whitespace validate-no-html-tags</validate>
+                    <frontend_model>Element119\SansecComposerIntegrityChecker\Block\Adminhtml\Form\Field\IgnoredPackages</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <depends>
+                        <field id="system/sansec_composer_integrity_checker/scan_enable">1</field>
+                        <field id="system/sansec_composer_integrity_checker/package_ignore_list_enable">1</field>
+                    </depends>
+                </field>
+                <field id="remove_ignored_packages_from_admin_grid"
+                       translate="label"
+                       type="select"
+                       sortOrder="70"
+                       showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0"
+                       canRestore="1">
+                    <label>Remove Ignored Packages from Admin Grid</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="system/sansec_composer_integrity_checker/scan_enable">1</field>
+                        <field id="system/sansec_composer_integrity_checker/package_ignore_list_enable">1</field>
+                    </depends>
+                </field>
+                <field id="remove_ignored_packages_from_admin_notif"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="80"
+                       showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0"
+                       canRestore="1">
+                    <label>Remove Ignored Packages from Admin Notifications</label>
+                    <comment>If only ignored packages fail to meet the threshold, no notification will be shown.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="system/sansec_composer_integrity_checker/scan_enable">1</field>
+                        <field id="system/sansec_composer_integrity_checker/package_ignore_list_enable">1</field>
+                    </depends>
+                </field>
+                <field id="remove_ignored_packages_from_emails"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="90"
+                       showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0"
+                       canRestore="1">
+                    <label>Remove Ignored Packages from Email Notifications</label>
+                    <comment>If only ignored packages fail to meet the threshold, no email will be sent.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="system/sansec_composer_integrity_checker/scan_enable">1</field>
+                        <field id="system/sansec_composer_integrity_checker/package_ignore_list_enable">1</field>
+                        <field id="system/sansec_composer_integrity_checker/scan_email_notification_enable">1</field>
+                    </depends>
+                </field>
             </group>
         </section>
     </system>

@@ -12,6 +12,10 @@
             <sansec_composer_integrity_checker>
                 <scan_enable>1</scan_enable>
                 <scan_email_notification_enable>0</scan_email_notification_enable>
+                <package_ignore_list_enable>0</package_ignore_list_enable>
+                <remove_ignored_packages_from_admin_grid>0</remove_ignored_packages_from_admin_grid>
+                <remove_ignored_packages_from_admin_notif>0</remove_ignored_packages_from_admin_notif>
+                <remove_ignored_packages_from_emails>0</remove_ignored_packages_from_emails>
             </sansec_composer_integrity_checker>
         </system>
     </default>
