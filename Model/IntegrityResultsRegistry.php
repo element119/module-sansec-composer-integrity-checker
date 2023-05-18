@@ -38,7 +38,9 @@ class IntegrityResultsRegistry extends Flag implements HyvaGridArrayProviderInte
 
     public function getHyvaGridData(): array
     {
-        $packageData = $this->getLastResults();
+        $packageData = $this->moduleConfig->shouldOnlyShowFailuresInGrid()
+            ? $this->getFailedMatches()
+            : $this->getLastResults();
 
         return $this->moduleConfig->isIgnoreListEnabled() && $this->moduleConfig->shouldRemoveIgnoredPackagesFromAdminGrid()
             ? $this->removeIgnoredPackages($packageData)
