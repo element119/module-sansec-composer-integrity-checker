@@ -80,6 +80,12 @@ will be sent if enabled.
 
 <br>
 
+### Only Show Failures in Admin Grid
+Determines whether to only show packages that have failed to meet the match threshold in the admin grid. This feature is
+disabled by default but can be enabled by setting this option to `Yes`.
+
+<br>
+
 ### Report Integrity Failures by Email
 Allow emails to be sent when the Sansec Composer integrity checker finds discrepancies with your dependency files.
 This feature is disabled by default but can be enabled by setting this option to `Yes`. Once enabled you will be able
@@ -129,8 +135,7 @@ packages will be removed from email notifications.
 
 ## 📸 Screenshots & GIFs
 ### Admin Configuration
-![admin-config](https://github.com/element119/module-sansec-composer-integrity-checker/assets/40261741/10f42c1a-adef-44f7-9390-1db9315d3ea7)
-
+![admin-config](https://github.com/element119/module-sansec-composer-integrity-checker/assets/40261741/d6ee992f-a513-473f-b607-7497723b2d99)
 
 <br>
 
