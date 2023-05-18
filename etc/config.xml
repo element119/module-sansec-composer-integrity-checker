@@ -11,6 +11,7 @@
         <system>
             <sansec_composer_integrity_checker>
                 <scan_enable>1</scan_enable>
+                <grid_failures_only>0</grid_failures_only>
                 <scan_email_notification_enable>0</scan_email_notification_enable>
                 <package_ignore_list_enable>0</package_ignore_list_enable>
                 <remove_ignored_packages_from_admin_grid>0</remove_ignored_packages_from_admin_grid>

@@ -44,6 +44,20 @@
                         <field id="system/sansec_composer_integrity_checker/scan_enable">1</field>
                     </depends>
                 </field>
+                <field id="grid_failures_only"
+                       translate="label"
+                       type="select"
+                       sortOrder="25"
+                       showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0"
+                       canRestore="1">
+                    <label>Only Show Failures in Admin Grid</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="system/sansec_composer_integrity_checker/scan_enable">1</field>
+                    </depends>
+                </field>
                 <field id="scan_email_notification_enable"
                        translate="label"
                        type="select"
