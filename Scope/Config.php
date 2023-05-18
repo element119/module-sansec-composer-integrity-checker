@@ -15,6 +15,7 @@ use Magento\Framework\Serialize\SerializerInterface;
 class Config
 {
     private const XML_PATH_SCAN_ENABLED = 'system/sansec_composer_integrity_checker/scan_enable';
+    private const XML_PATH_GRID_FAILURES_ONLY = 'system/sansec_composer_integrity_checker/grid_failures_only';
     private const XML_PATH_EMAIL_ENABLED = 'system/sansec_composer_integrity_checker/scan_email_notification_enable';
     private const XML_PATH_EMAIL_THRESHOLD = 'system/sansec_composer_integrity_checker/scan_failure_threshold';
     private const XML_PATH_EMAIL_RECIPIENTS = 'system/sansec_composer_integrity_checker/scan_error_email_recipient';
@@ -45,6 +46,11 @@ class Config
     public function getSansecComposerIntegrityMatchThreshold(): int
     {
         return (int)$this->scopeConfig->getValue(self::XML_PATH_EMAIL_THRESHOLD);
+    }
+
+    public function shouldOnlyShowFailuresInGrid(): bool
+    {
+        return $this->scopeConfig->isSetFlag(self::XML_PATH_GRID_FAILURES_ONLY);
     }
 
     public function getSansecComposerIntegrityEmailRecipients(): array
