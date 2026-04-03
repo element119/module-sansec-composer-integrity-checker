@@ -27,11 +27,11 @@ class IntegrityResultsRegistry extends Flag implements HyvaGridArrayProviderInte
         Context $context,
         Registry $registry,
         private readonly Config $moduleConfig,
-        AbstractResource $resource = null,
-        AbstractDb $resourceCollection = null,
+        ?AbstractResource $resource = null,
+        ?AbstractDb $resourceCollection = null,
         array $data = [],
-        Json $json = null,
-        Serialize $serialize = null
+        ?Json $json = null,
+        ?Serialize $serialize = null
     ) {
         parent::__construct($context, $registry, $resource, $resourceCollection, $data, $json, $serialize);
     }
